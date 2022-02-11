@@ -1,0 +1,41 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* You can add global styles to this file, and also import other style files */
+.auth-card{
+    width:50%;
+    margin-left: 25%;
+    padding: 100px;
+}
+.auth-container{
+    margin: 100px auto;
+}
+.auth-title,.post-title{
+    text-align: center;
+}
+.post-card{
+    width: 70%;
+    margin-left: 15%;
+    padding: 50px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: space-between;
+    margin:50px;
+}
+.post-btn{
+    text-align: center;
+    width: max-content;
+}
+.main-container{
+    margin: 50px;
+}
+.right-side{
+    display: flex;
+    align-items: flex-end;
+}
+table{
+    width: 100% !important;
+}

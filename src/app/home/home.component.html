@@ -1,0 +1,34 @@
+<div class="header">
+  <h2>Notices</h2><br>
+  <div class="right-side">
+  <a *ngIf="showCreatePost==1" class="btn btn-primary btn-block post-btn" routerLink="/admins">Co-Admins</a>&nbsp;&nbsp;
+  <a *ngIf="showCreatePost==2 && activeAdmin=='true' || showCreatePost==1" class="btn btn-primary btn-block post-btn" routerLink="/posts/create">Create Post</a>
+  <button class="btn btn-primay" (click)="logout()">Logout</button></div>
+</div>
+<div class="main-container">
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Attachment</th>
+        <th *ngIf="showCreatePost==1">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="posts?.length != 0">
+      <tr *ngFor="let post of posts">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.description }}</td>
+        <td><a href="{{post.attachment}}" download><i class="bi bi-paperclip"></i></a></td>
+        <td *ngIf="showCreatePost==1"><button class="btn btn-primary" routerLink="/post/edit/{{post.id}}">Edit</button></td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="posts?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data!</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

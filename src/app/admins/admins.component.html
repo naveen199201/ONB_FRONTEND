@@ -1,0 +1,32 @@
+<div class="header">
+    <h2>Co-Admins</h2><br>
+</div>
+<div class="main-container">
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="admins?.length != 0">
+            <tr *ngFor="let admin of admins">
+                <td>{{ admin.id }}</td>
+                <td>{{ admin.first_name }}</td>
+                <td>{{ admin.last_name }}</td>
+                <td>{{admin.email}}</td>
+                <td><button class="btn btn-primary" (click)="approve(admin)"><span
+                            *ngIf="!admin.is_staff">Approve as Co-admin</span><span
+                            *ngIf="admin.is_staff">DisApprove</span></button></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="admins?.length == 0">
+            <tr>
+                <td colspan="5" class="no-data-available">No data!</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

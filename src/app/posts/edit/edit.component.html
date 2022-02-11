@@ -1,0 +1,60 @@
+<div class="auth-container">
+  <div class="card post-card card-container">
+    <h2 class="post-title">Edit Post</h2>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" [(ngModel)]="form.title"  required #title="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="title.errors && f.submitted">
+          Title is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="text" class="form-control" name="description" rows="5" [(ngModel)]="form.description" [placeholder]="'Enter text here'"  required
+          #description="ngModel" ></textarea>
+        <div class="alert alert-danger" role="alert" *ngIf="description.errors && f.submitted">
+          <div *ngIf="description.errors['required']">Description is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="target_year">Batch:</label>
+        <select [(ngModel)]="form.target_year" name="target_year" #target_year="ngModel" class="form-control">
+            <!-- <option disabled>Select Batch</option>
+            <option>Choose Batch</option> -->
+            <option *ngFor="let batch of batches" [value]="batch.value">{{batch.name}}</option>
+        </select>
+        <div class="alert-danger" *ngIf="target_year.errors && f.submitted">
+          <div *ngIf="target_year.errors['required']">Batch is required</div>
+        </div>
+      </div>
+      <div *ngIf="form.target_year==2" class="form-group">
+        <label for="target_audience">Specialization:</label>
+        <select [(ngModel)]="form.target_audience"  name="target_audience" #target_audience="ngModel" class="form-control">
+            <!-- <option disabled>Select Specialization</option>
+            <option>Choose Specialization</option> -->
+            <option *ngFor="let specialization of specializations" [value]="specialization.value">{{specialization.name}}</option>
+        </select>
+        <div class="alert-danger" *ngIf="target_audience.errors && f.submitted">
+          <div *ngIf="target_audience.errors['required']">specialization is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="post_type">Post Type:</label>
+        <select [(ngModel)]="form.post_type"  name="post_type" #post_type="ngModel" class="form-control">
+            <!-- <option disabled>Select Specialization</option>
+            <option>Choose Specialization</option> -->
+            <option *ngFor="let type of postTypes" [value]="type.value">{{type.name}}</option>
+        </select>
+        <div class="alert-danger" *ngIf="post_type.errors && f.submitted">
+          <div *ngIf="post_type.errors['required']">Post type is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
